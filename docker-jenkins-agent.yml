@@ -1,0 +1,15 @@
+services:
+  jenkins-agent:
+    image: jenkins/inbound-agent:latest
+    container_name: jenkins-agent-1
+    environment:
+      JENKINS_URL: http://jenkins:8080
+      JENKINS_AGENT_NAME: agent-1
+      JENKINS_SECRET: 567930eddb9e8e761e04adfb2294afe0a0faa626ffad77346097615a0f5eabbe
+      JENKINS_AGENT_WORKDIR: /home/jenkins
+    networks:
+      - agent-net
+networks:
+  agent-net:
+    external: true
+    name: jenkins-docker-installer_default
